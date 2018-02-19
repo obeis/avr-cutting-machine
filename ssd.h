@@ -10,5 +10,11 @@ void ssd_init();
 void ssd_run();
 void ssd_time(uint8_t n);
 void ssd_delay(uint8_t n);
+void ssd_p_mode();
+void ssd_display_time();
+void ssd_display_delay();
+void ssd_t_mode();
+void ssd_d_mode();
+void ssd_fp_mode();
 
 #endif
