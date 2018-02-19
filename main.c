@@ -25,8 +25,6 @@ int main()
 
 	while(1)
 	{
-		//ssd_scanning();
-
-		PORTC = ssd[1];
+		ssd_run();
 	}
 }

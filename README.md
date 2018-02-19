@@ -1,1 +1,1 @@
-AVR controls the automatic machine
+AVR Automatic Cutting Machine

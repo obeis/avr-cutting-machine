@@ -9,41 +9,20 @@ uint8_t ssd[2];
 void ssd_init()
 {
 	SSD_DDR_Data = 0xFF;
-	SSD_DDR_one = (1<<P_SSD_one);
-	SSD_DDR_two = (1<<P_SSD_two);
 }
 
-void ssd_on_one()
+void ssd_run()
 {
-	SSD_PORT_c &= ~(1<<P_SSD_one);
-}
-
-void ssd_off_one()
-{
-	SSD_PORT_c |= (1<<1<<P_SSD_one);
-}
-
-void ssd_on_two()
-{
-	SSD_PORT_c &= ~(1<<P_SSD_two);
-}
-
-void ssd_off_two()
-{
-	SSD_PORT_c |= (1<<1<<P_SSD_two);
-}
-
-void ssd_scanning()
-{
-	ssd_off_two();
+	// t
+	SSD_PORT = 0b11000011;
+	_delay_ms(1000);
 	SSD_PORT = ssd[0];
-        ssd_on_one();
-        _delay_ms(500);
-
-        ssd_off_one();
+        _delay_ms(1000);
+	// d
+	SSD_PORT = 0b11101001;
+	_delay_ms(1000);
 	SSD_PORT = ssd[1];
-        ssd_on_two();
-        _delay_ms(500);
+        _delay_ms(1000);
 }
 
 void ssd_time(uint8_t n)
