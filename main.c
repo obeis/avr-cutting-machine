@@ -8,6 +8,7 @@
 #include "timer.h"
 #include "ssd.h"
 #include "eeprom.h"
+#include "motor.h"
 
 uint8_t time_ee  EEMEM = 7;
 uint8_t delay_ee EEMEM = 4;
@@ -19,6 +20,8 @@ int main()
 {
 	int_init();
 	ssd_init();
+	timer_init();
+	motor_init();
 
 	time  = eeprom_read_byte(&time_ee);
 	delay = eeprom_read_byte(&delay_ee);
