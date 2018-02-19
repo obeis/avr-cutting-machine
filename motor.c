@@ -45,3 +45,11 @@ void motor_D_off()
 {
 	MOTOR_PORT &= ~(1<<PMD);
 }
+
+void motor_all_stop()
+{
+	MOTOR_PORT &= ~(1<<PMA);
+	MOTOR_PORT &= ~(1<<PMB);
+	MOTOR_PORT &= ~(1<<PMC);
+	MOTOR_PORT &= ~(1<<PMD);
+}

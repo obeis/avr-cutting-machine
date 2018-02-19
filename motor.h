@@ -17,5 +17,6 @@ void motor_C_on();
 void motor_C_off();
 void motor_D_on();
 void motor_D_off();
+void motor_all_stop();
 
 #endif
