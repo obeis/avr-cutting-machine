@@ -141,6 +141,9 @@ ISR(INT2_vect)
 		motor_vector_C_D = 'B';
 	else if(motor_vector_C_D == 'B')
 		motor_vector_C_D = 'F';
+
+	motor_C_off();
+        motor_D_off();
 }
 
 /*
