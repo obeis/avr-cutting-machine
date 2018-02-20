@@ -50,8 +50,8 @@ int main()
 
 		if(PIND & (1<<PD6))
 		{
-			motor_all_stop();
 			cli();
+			motor_all_stop();
 			break;
 		}
 	}

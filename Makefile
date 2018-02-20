@@ -18,10 +18,10 @@ main :
 	$(CC) -g -Os -DF_CPU=$(FREQ) -mmcu=$(MCU) -c $(SOURCE)
 	$(CC) -g -DF_CPU=$(FREQ) -mmcu=$(MCU) -o $(PROJECT).elf $(OBJECT)
 	$(OBJCOPY) -j .text -j .data -O ihex $(PROJECT).elf $(PROJECT).hex
-	$(OBJCOPY) -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 -O ihex main.elf main.eep
+	$(OBJCOPY) -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 -O ihex $(PROJECT).elf $(PROJECT).eep
 
 upload :
-	avrdude -c usbasp -p m32 -U flash:w:main.hex:i -U eeprom:w:main.eep:i
+	avrdude -c usbasp -p m32 -U flash:w:$(PROJECT).hex:i -U eeprom:w:$(PROJECT).eep:i
 
 clean :
 	$(RM) $(OBJECT) $(PROJECT).elf $(PROJECT).hex $(PROJECT).eep
