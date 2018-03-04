@@ -7,7 +7,6 @@
 #include "int.h"
 #include "timer.h"
 #include "ssd.h"
-#include "eeprom.h"
 #include "motor.h"
 
 uint8_t time_ee  EEMEM = 7;
