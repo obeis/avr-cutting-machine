@@ -25,3 +25,6 @@ upload :
 
 clean :
 	$(RM) $(OBJECT) $(PROJECT).elf $(PROJECT).hex $(PROJECT).eep
+
+fuse :
+	avrdude -c usbasp -p m32 -U lfuse:w:0xde:m -U hfuse:w:0xc9:m
