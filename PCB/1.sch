@@ -14956,8 +14956,8 @@ single cathode, 13 mm</description>
 <instance part="LED1" gate="G$1" x="85.09" y="45.72"/>
 <instance part="GND1" gate="1" x="60.96" y="35.56"/>
 <instance part="P+1" gate="VCC" x="93.98" y="59.69"/>
-<instance part="X2" gate="-1" x="93.98" y="49.53" rot="R90"/>
-<instance part="X2" gate="-2" x="78.74" y="59.69" rot="R180"/>
+<instance part="X2" gate="-1" x="78.74" y="59.69" rot="R180"/>
+<instance part="X2" gate="-2" x="93.98" y="49.53" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -15030,7 +15030,7 @@ single cathode, 13 mm</description>
 <junction x="71.12" y="53.34"/>
 <pinref part="R1" gate="G$1" pin="2"/>
 <wire x1="73.66" y1="53.34" x2="71.12" y2="53.34" width="0.1524" layer="91"/>
-<pinref part="X2" gate="-2" pin="KL"/>
+<pinref part="X2" gate="-1" pin="KL"/>
 <wire x1="73.66" y1="59.69" x2="71.12" y2="59.69" width="0.1524" layer="91"/>
 <junction x="71.12" y="59.69"/>
 </segment>
@@ -15045,9 +15045,9 @@ single cathode, 13 mm</description>
 </net>
 <net name="VCC" class="0">
 <segment>
+<pinref part="X2" gate="-2" pin="KL"/>
 <pinref part="P+1" gate="VCC" pin="VCC"/>
-<pinref part="X2" gate="-1" pin="KL"/>
-<wire x1="93.98" y1="57.15" x2="93.98" y2="54.61" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="54.61" x2="93.98" y2="57.15" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
@@ -15117,8 +15117,8 @@ single cathode, 13 mm</description>
 <instance part="R22" gate="G$1" x="212.09" y="22.86" rot="R90"/>
 <instance part="GND10" gate="1" x="204.47" y="12.7"/>
 <instance part="GND11" gate="1" x="212.09" y="12.7"/>
-<instance part="X6" gate="-1" x="194.31" y="24.13" rot="R180"/>
-<instance part="X6" gate="-2" x="196.85" y="29.21"/>
+<instance part="X6" gate="-1" x="196.85" y="29.21"/>
+<instance part="X6" gate="-2" x="194.31" y="24.13" rot="R180"/>
 <instance part="X7" gate="-1" x="219.71" y="29.21" rot="R180"/>
 <instance part="X7" gate="-2" x="224.79" y="24.13"/>
 <instance part="P+5" gate="VCC" x="187.96" y="29.21"/>
@@ -15421,8 +15421,8 @@ single cathode, 13 mm</description>
 <segment>
 <pinref part="P+5" gate="VCC" pin="VCC"/>
 <wire x1="187.96" y1="26.67" x2="187.96" y2="24.13" width="0.1524" layer="91"/>
-<pinref part="X6" gate="-1" pin="KL"/>
-<wire x1="187.96" y1="24.13" x2="189.23" y2="24.13" width="0.1524" layer="91"/>
+<pinref part="X6" gate="-2" pin="KL"/>
+<wire x1="189.23" y1="24.13" x2="187.96" y2="24.13" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$26" class="0">
@@ -15684,7 +15684,7 @@ single cathode, 13 mm</description>
 <pinref part="R21" gate="G$1" pin="2"/>
 <label x="203.2" y="31.75" size="1.778" layer="95"/>
 <wire x1="204.47" y1="27.94" x2="204.47" y2="29.21" width="0.1524" layer="91"/>
-<pinref part="X6" gate="-2" pin="KL"/>
+<pinref part="X6" gate="-1" pin="KL"/>
 <wire x1="204.47" y1="29.21" x2="204.47" y2="31.75" width="0.1524" layer="91"/>
 <wire x1="201.93" y1="29.21" x2="204.47" y2="29.21" width="0.1524" layer="91"/>
 <junction x="204.47" y="29.21"/>
