@@ -14902,7 +14902,7 @@ single cathode, 13 mm</description>
 <part name="X2" library="con-ptr500" deviceset="AK500/2" device="" value="on/of"/>
 <part name="P+2" library="supply1" deviceset="VCC" device=""/>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
-<part name="Q1" library="special" deviceset="XTAL" device=""/>
+<part name="Q1" library="special" deviceset="XTAL" device="" value="16MHz"/>
 <part name="C3" library="rcl" deviceset="C-EU" device="025-024X044" value="22p"/>
 <part name="C4" library="rcl" deviceset="C-EU" device="025-024X044" value="22p"/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
@@ -14939,6 +14939,9 @@ single cathode, 13 mm</description>
 <part name="P+5" library="supply1" deviceset="VCC" device=""/>
 <part name="P+6" library="supply1" deviceset="VCC" device=""/>
 <part name="R23" library="rcl" deviceset="R-EU_" device="0204/7" value="330"/>
+<part name="C5" library="rcl" deviceset="C-EU" device="025-024X044" value="100n"/>
+<part name="GND12" library="supply1" deviceset="GND" device=""/>
+<part name="C6" library="rcl" deviceset="C-EU" device="025-024X044" value="100n"/>
 </parts>
 <sheets>
 <sheet>
@@ -14956,8 +14959,8 @@ single cathode, 13 mm</description>
 <instance part="LED1" gate="G$1" x="85.09" y="45.72"/>
 <instance part="GND1" gate="1" x="60.96" y="35.56"/>
 <instance part="P+1" gate="VCC" x="93.98" y="59.69"/>
-<instance part="X2" gate="-1" x="78.74" y="59.69" rot="R180"/>
-<instance part="X2" gate="-2" x="93.98" y="49.53" rot="R90"/>
+<instance part="X2" gate="-1" x="93.98" y="49.53" rot="R90"/>
+<instance part="X2" gate="-2" x="78.74" y="59.69" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -15030,7 +15033,7 @@ single cathode, 13 mm</description>
 <junction x="71.12" y="53.34"/>
 <pinref part="R1" gate="G$1" pin="2"/>
 <wire x1="73.66" y1="53.34" x2="71.12" y2="53.34" width="0.1524" layer="91"/>
-<pinref part="X2" gate="-1" pin="KL"/>
+<pinref part="X2" gate="-2" pin="KL"/>
 <wire x1="73.66" y1="59.69" x2="71.12" y2="59.69" width="0.1524" layer="91"/>
 <junction x="71.12" y="59.69"/>
 </segment>
@@ -15045,7 +15048,7 @@ single cathode, 13 mm</description>
 </net>
 <net name="VCC" class="0">
 <segment>
-<pinref part="X2" gate="-2" pin="KL"/>
+<pinref part="X2" gate="-1" pin="KL"/>
 <pinref part="P+1" gate="VCC" pin="VCC"/>
 <wire x1="93.98" y1="54.61" x2="93.98" y2="57.15" width="0.1524" layer="91"/>
 </segment>
@@ -15124,6 +15127,9 @@ single cathode, 13 mm</description>
 <instance part="P+5" gate="VCC" x="187.96" y="29.21"/>
 <instance part="P+6" gate="VCC" x="231.14" y="29.21"/>
 <instance part="R23" gate="G$1" x="106.68" y="78.74" rot="R90"/>
+<instance part="C5" gate="G$1" x="113.03" y="90.17" rot="R270"/>
+<instance part="GND12" gate="1" x="92.71" y="81.28"/>
+<instance part="C6" gate="G$1" x="116.84" y="82.55"/>
 </instances>
 <busses>
 </busses>
@@ -15282,14 +15288,14 @@ single cathode, 13 mm</description>
 <wire x1="120.65" y1="72.39" x2="120.65" y2="69.85" width="0.1524" layer="91"/>
 <wire x1="123.19" y1="91.44" x2="120.65" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="120.65" y1="91.44" x2="120.65" y2="83.82" width="0.1524" layer="91"/>
-<pinref part="IC2" gate="G$1" pin="AREF"/>
-<wire x1="123.19" y1="96.52" x2="120.65" y2="96.52" width="0.1524" layer="91"/>
-<wire x1="120.65" y1="96.52" x2="120.65" y2="91.44" width="0.1524" layer="91"/>
-<junction x="120.65" y="91.44"/>
 <junction x="120.65" y="83.82"/>
 <pinref part="LED2" gate="G$1" pin="C"/>
-<wire x1="115.57" y1="72.39" x2="120.65" y2="72.39" width="0.1524" layer="91"/>
+<wire x1="115.57" y1="72.39" x2="116.84" y2="72.39" width="0.1524" layer="91"/>
 <junction x="120.65" y="72.39"/>
+<pinref part="C6" gate="G$1" pin="2"/>
+<wire x1="116.84" y1="72.39" x2="120.65" y2="72.39" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="77.47" x2="116.84" y2="72.39" width="0.1524" layer="91"/>
+<junction x="116.84" y="72.39"/>
 </segment>
 <segment>
 <pinref part="C4" gate="G$1" pin="1"/>
@@ -15349,6 +15355,12 @@ single cathode, 13 mm</description>
 <pinref part="GND11" gate="1" pin="GND"/>
 <wire x1="212.09" y1="17.78" x2="212.09" y2="15.24" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="C5" gate="G$1" pin="2"/>
+<wire x1="107.95" y1="90.17" x2="92.71" y2="90.17" width="0.1524" layer="91"/>
+<wire x1="92.71" y1="90.17" x2="92.71" y2="83.82" width="0.1524" layer="91"/>
+<pinref part="GND12" gate="1" pin="GND"/>
+</segment>
 </net>
 <net name="N$21" class="0">
 <segment>
@@ -15384,7 +15396,8 @@ single cathode, 13 mm</description>
 <pinref part="P+2" gate="VCC" pin="VCC"/>
 <wire x1="123.19" y1="86.36" x2="119.38" y2="86.36" width="0.1524" layer="91"/>
 <pinref part="IC2" gate="G$1" pin="AVCC"/>
-<wire x1="119.38" y1="86.36" x2="106.68" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="86.36" x2="116.84" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="86.36" x2="106.68" y2="86.36" width="0.1524" layer="91"/>
 <wire x1="106.68" y1="86.36" x2="102.87" y2="86.36" width="0.1524" layer="91"/>
 <wire x1="123.19" y1="93.98" x2="119.38" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="119.38" y1="93.98" x2="119.38" y2="86.36" width="0.1524" layer="91"/>
@@ -15392,6 +15405,9 @@ single cathode, 13 mm</description>
 <pinref part="R23" gate="G$1" pin="2"/>
 <wire x1="106.68" y1="83.82" x2="106.68" y2="86.36" width="0.1524" layer="91"/>
 <junction x="106.68" y="86.36"/>
+<pinref part="C6" gate="G$1" pin="1"/>
+<wire x1="116.84" y1="85.09" x2="116.84" y2="86.36" width="0.1524" layer="91"/>
+<junction x="116.84" y="86.36"/>
 </segment>
 <segment>
 <pinref part="P+3" gate="VCC" pin="VCC"/>
@@ -15435,6 +15451,7 @@ single cathode, 13 mm</description>
 <wire x1="116.84" y1="110.49" x2="116.84" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="C3" gate="G$1" pin="2"/>
 <wire x1="114.3" y1="110.49" x2="116.84" y2="110.49" width="0.1524" layer="91"/>
+<junction x="116.84" y="110.49"/>
 </segment>
 </net>
 <net name="N$27" class="0">
@@ -15447,6 +15464,7 @@ single cathode, 13 mm</description>
 <wire x1="116.84" y1="97.79" x2="116.84" y2="99.06" width="0.1524" layer="91"/>
 <pinref part="C4" gate="G$1" pin="2"/>
 <wire x1="116.84" y1="97.79" x2="114.3" y2="97.79" width="0.1524" layer="91"/>
+<junction x="116.84" y="97.79"/>
 </segment>
 </net>
 <net name="N$28" class="0">
@@ -15698,9 +15716,30 @@ single cathode, 13 mm</description>
 <wire x1="106.68" y1="72.39" x2="107.95" y2="72.39" width="0.1524" layer="91"/>
 </segment>
 </net>
+<net name="N$45" class="0">
+<segment>
+<pinref part="IC2" gate="G$1" pin="AREF"/>
+<wire x1="123.19" y1="96.52" x2="116.84" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="96.52" x2="116.84" y2="90.17" width="0.1524" layer="91"/>
+<pinref part="C5" gate="G$1" pin="1"/>
+<wire x1="116.84" y1="90.17" x2="115.57" y2="90.17" width="0.1524" layer="91"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="104,2,123.19,93.98,IC2,AVCC,VCC,,,"/>
+<approved hash="108,2,116.84,110.49,N$26,,,,,"/>
+<approved hash="108,2,116.84,97.79,N$27,,,,,"/>
+<approved hash="113,1,38.1,46.99,B1,,,,,"/>
+<approved hash="113,2,204.47,61.0912,D2,,,,,"/>
+<approved hash="113,2,115.121,104.14,Q1,,,,,"/>
+<approved hash="113,2,268.065,53.34,X4,,,,,"/>
+<approved hash="113,2,267.97,112.935,X5,,,,,"/>
+<approved hash="113,2,198.025,29.21,X6,,,,,"/>
+<approved hash="113,2,218.535,29.21,X7,,,,,"/>
+</errors>
 </schematic>
 </drawing>
 </eagle>
