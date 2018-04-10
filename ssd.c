@@ -20,11 +20,17 @@ void ssd_time(uint8_t n)
                 case 2: ssd[0] = 0b11001101; break;
                 case 3: ssd[0] = 0b01101101; break;
                 case 4: ssd[0] = 0b00101011; break;
-                case 5: ssd[0] = 0b01100111; break;
-                case 6: ssd[0] = 0b11100111; break;
+                case 5:	ssd[0] = 0b01100111; break;
+                case 6:	ssd[0] = 0b11100111; break;
                 case 7: ssd[0] = 0b00101100; break;
                 case 8: ssd[0] = 0b11101111; break;
                 case 9: ssd[0] = 0b01101111; break;
+		case 10: ssd[0] = 0b10101111; break;		// a
+		case 11: ssd[0] = 0b11100011; break;		// b
+		case 12: ssd[0] = 0b11000110; break;		// c
+		case 13: ssd[0] = 0b11101001; break;		// d
+		case 14: ssd[0] = 0b11000111; break;		// e
+		case 15: ssd[0] = 0b10000111; break;		// f
         }
 }
 
@@ -42,6 +48,12 @@ void ssd_delay(uint8_t n)
                 case 7: ssd[1] = 0b00101100; break;
                 case 8: ssd[1] = 0b11101111; break;
                 case 9: ssd[1] = 0b01101111; break;
+		case 10: ssd[1] = 0b10101111; break;		// a
+		case 11: ssd[1] = 0b11100011; break;		// b
+		case 12: ssd[1] = 0b11000110; break;		// c
+		case 13: ssd[1] = 0b11101001; break;		// d
+		case 14: ssd[1] = 0b11000111; break;		// e
+		case 15: ssd[1] = 0b10000111; break;		// f
         }
 }
 

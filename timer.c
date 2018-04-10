@@ -3,7 +3,8 @@
 void timer1_init()
 {
 	/*
-		time = ((2^16) * 256(prescaler)) / 16M = 1.048576 sec
+		time = ((2^16) * 64(prescaler)) / 16M = 0.262144 sec
+		from 0.262144 to 3.93216 (0.262144 * 15) sec
 	*/
 
 	// CTC Mode
@@ -14,8 +15,8 @@ void timer1_A_start()
 {
 	OCR1A = 0xFFFF;
 
-	// clkI/O/256 (From prescaler)
-        TCCR1B |= (1<<CS12);
+	// clkI/O/64 (From prescaler)
+        TCCR1B |= (1<<CS11) | (1<<CS10);
 
 	TIMSK |= (1<<OCIE1A);
 }
@@ -25,7 +26,7 @@ void timer1_B_start()
 	OCR1B = 0xFFFF;
 
         // clkI/O/256 (From prescaler)
-        TCCR1B |= (1<<CS12);
+        TCCR1B |= (1<<CS11) | (1<<CS10);
 
         TIMSK |= (1<<OCIE1B);
 }

@@ -64,7 +64,7 @@ int main()
 
                 if(PIND & (1<<PD7))
                 {
-                        if(time > 9 | time == 9)
+                        if(time > 15 | time == 15)
                                 time = 0;
                         else
                                 time++;
@@ -85,7 +85,7 @@ int main()
 
                 if(PIND & (1<<PD7))
                 {
-                        if(delay > 9 | delay == 9)
+                        if(delay > 15 | delay == 15)
                                 delay = 0;
                         else
                                 delay++;
@@ -181,7 +181,12 @@ ISR(TIMER1_COMPB_vect)
 
 ISR(TIMER0_OVF_vect)
 {
-	if(t0 == (time*25) || t0 > (time*25))
+	/*
+		time = ((2^8) * 1024) / 16M = 0.016384 sec
+		0.016384 * 15 = 0.24576 sec
+		from 0.24576 to 3.6864 (0.24576 * 15) sec
+	*/
+	if(t0 == (time*15) || t0 > (time*15))
 	{
 		motor_C_off();
 		motor_D_off();

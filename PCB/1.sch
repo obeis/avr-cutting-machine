@@ -15661,13 +15661,14 @@ single cathode, 13 mm</description>
 </net>
 <net name="INT2" class="0">
 <segment>
-<pinref part="IC2" gate="G$1" pin="(T1)PB1"/>
-<wire x1="163.83" y1="76.2" x2="167.64" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="167.64" y1="76.2" x2="167.64" y2="74.93" width="0.1524" layer="91"/>
 <pinref part="R20" gate="G$1" pin="1"/>
 <wire x1="167.64" y1="74.93" x2="168.91" y2="74.93" width="0.1524" layer="91"/>
 <wire x1="167.64" y1="76.2" x2="181.61" y2="76.2" width="0.1524" layer="91"/>
 <label x="181.61" y="77.47" size="1.778" layer="95"/>
+<pinref part="IC2" gate="G$1" pin="(AIN0/INT2)PB2"/>
+<wire x1="163.83" y1="78.74" x2="167.64" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="167.64" y1="78.74" x2="167.64" y2="76.2" width="0.1524" layer="91"/>
 <junction x="167.64" y="76.2"/>
 </segment>
 <segment>
