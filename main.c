@@ -9,8 +9,8 @@
 #include "ssd.h"
 #include "motor.h"
 
-uint8_t time_ee  EEMEM = 7;
-uint8_t delay_ee EEMEM = 4;
+uint8_t time_ee  EEMEM = 3;
+uint8_t delay_ee EEMEM = 2;
 
 volatile uint8_t time;
 volatile uint8_t delay;
