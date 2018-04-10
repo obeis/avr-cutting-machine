@@ -2,6 +2,7 @@
 
 #include <avr/io.h>
 #include <util/delay.h>
+#include "timer.h"
 #include "ssd.h"
 
 uint8_t ssd[2];
@@ -58,18 +59,9 @@ void ssd_delay(uint8_t n)
 }
 
 
-void ssd_run()
+void ssd_timer_run()
 {
-	// t
-	SSD_PORT = 0b11000011;
-	_delay_ms(1000);
-	SSD_PORT = ssd[0];
-        _delay_ms(1000);
-	// d
-	SSD_PORT = 0b11101001;
-	_delay_ms(1000);
-	SSD_PORT = ssd[1];
-        _delay_ms(1000);
+	timer2_init();
 }
 
 void ssd_p_mode()

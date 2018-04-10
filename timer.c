@@ -68,6 +68,20 @@ void timer0_stop()
         TIMSK &= ~(1<<TOIE0);
 }
 
+void timer2_init()
+{
+	/*
+		time = ((2^8) * 1024) / 16M = 0.016384 sec
+		0.016384 * 65 = 1.06496 sec
+	*/
+
+	// clk I/O /1024 (From prescaler)
+	TCCR2 |= (1<<CS22) | (1<<CS21) | (1<<CS20);
+
+	// Overflow Interrupt enable
+	TIMSK |= (1<<TOIE2);
+}
+
 void timer_init()
 {
 	timer1_init();

@@ -22,7 +22,7 @@ volatile uint8_t delay;
 */
 volatile char motor_vector_C_D = 'F';
 
-uint8_t tca = 0, tcb = 0, t0 = 0;
+uint8_t tca = 0, tcb = 0, t0 = 0, tssd = 0, mssd = 0;
 
 int main()
 {
@@ -43,9 +43,23 @@ int main()
 
 	motor_A_on();
 
+	ssd_timer_run();
+
 	while(1)
 	{
-		ssd_run();
+		/*
+			PD6 = programming switch
+			PD7 = change value switch
+
+			PD0 = motor A (PA1)
+			PD1 = motor b (PA2)
+			PD4 = motor c (PA3)
+			PD5 = motor d (PA4)
+
+			PB0 =
+			PB1 =
+			PB3 = auto start switch
+		*/
 
 		if(PIND & (1<<PD6))
 		{
@@ -197,4 +211,43 @@ ISR(TIMER0_OVF_vect)
 	}
 	else
 		t0++;
+}
+
+ISR(TIMER2_OVF_vect)
+{
+	/*
+		time = ((2^8) * 1024) / 16M = 0.016384 sec
+                0.016384 * 65 = 1.06496 sec
+	*/
+
+	if(tssd == 65 || tssd > 65)
+	{
+		mssd++;
+
+		if(mssd == 1)
+		{
+			// t
+        		SSD_PORT = 0b11000011;
+		}
+		else if(mssd == 2)
+		{
+			SSD_PORT = ssd[0];
+		}
+		else if(mssd == 3)
+		{
+			// d
+        		SSD_PORT = 0b11101001;
+		}
+		else if(mssd == 4)
+		{
+			SSD_PORT = ssd[1];
+		}
+
+			tssd = 0;
+
+		if(mssd == 4 || mssd > 4)
+			mssd = 0;
+	}
+	else
+		tssd++;
 }
