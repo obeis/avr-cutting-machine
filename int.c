@@ -14,3 +14,11 @@ void int_init()
 	// INT1 INT0 INT2 interrupt enable
 	GICR |= (1<<INT1) | (1<<INT0) | (1<<INT2);
 }
+
+void int_disable()
+{
+	// INT1 INT0 INT2 interrupt disable
+	GICR &= ~(1<<INT0);
+	GICR &= ~(1<<INT1);
+	GICR &= ~(1<<INT2);
+}

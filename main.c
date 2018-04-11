@@ -8,6 +8,7 @@
 #include "timer.h"
 #include "ssd.h"
 #include "motor.h"
+#include "mode.h"
 
 uint8_t time_ee  EEMEM = 3;
 uint8_t delay_ee EEMEM = 2;
@@ -30,6 +31,7 @@ int main()
 	ssd_init();
 	timer_init();
 	motor_init();
+	port_init();
 
 	time  = eeprom_read_byte(&time_ee);
 	delay = eeprom_read_byte(&delay_ee);
@@ -41,33 +43,70 @@ int main()
 
 	sei();
 
-	motor_A_on();
-
 	ssd_timer_run();
 
-	while(1)
-	{
-		/*
-			PD6 = programming switch
-			PD7 = change value switch
 
-			PD0 = motor A (PA1)
-			PD1 = motor b (PA2)
-			PD4 = motor c (PA3)
-			PD5 = motor d (PA4)
+	if(mode == 0)
+		goto manual_mode;
+	else if(mode == 1)
+		goto auto_mode;
 
-			PB0 =
-			PB1 =
-			PB3 = auto start switch
-		*/
 
-		if(PIND & (1<<PD6))
+	manual_mode:
+
+	sei();
+
+	manual_mode_init();
+
+	// manual loop
+        while(1)
+        {
+		manual_mode();
+
+		if(PINB & (1<<PB3))
 		{
 			cli();
 			motor_all_stop();
-			break;
+			_delay_ms(350);
+                	goto auto_mode;
 		}
+
+		if(PIND & (1<<PD6))
+        	{
+                	cli();
+                	motor_all_stop();
+                	goto programming_mode;
+        	}
+        }
+
+	auto_mode:
+
+	sei();
+
+	auto_mode_init();
+
+	// auto loop
+	while(1)
+	{
+		auto_mode();
+
+		if(PINB & (1<<PB3))
+		{
+			cli();
+                        motor_all_stop();
+			_delay_ms(350);
+			goto manual_mode;
+		}
+
+		if(PIND & (1<<PD6))
+                {
+                        cli();
+                        motor_all_stop();
+                        goto programming_mode;
+                }
 	}
+
+	programming_mode:
 
 	ssd_p_mode();
 	ssd_t_mode();
@@ -219,7 +258,6 @@ ISR(TIMER2_OVF_vect)
 		time = ((2^8) * 1024) / 16M = 0.016384 sec
                 0.016384 * 65 = 1.06496 sec
 	*/
-
 	if(tssd == 65 || tssd > 65)
 	{
 		mssd++;

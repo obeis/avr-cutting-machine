@@ -25,7 +25,7 @@ void timer1_B_start()
 {
 	OCR1B = 0xFFFF;
 
-        // clkI/O/256 (From prescaler)
+        // clkI/O/64 (From prescaler)
         TCCR1B |= (1<<CS11) | (1<<CS10);
 
         TIMSK |= (1<<OCIE1B);
@@ -33,8 +33,9 @@ void timer1_B_start()
 
 void timer1_stop()
 {
-        // clkI/O/256 (From prescaler)
-        TCCR1B &= ~(1<<CS12);
+        // clkI/O/64 (From prescaler)
+        TCCR1B &= ~(1<<CS11);
+	TCCR1B &= ~(1<<CS10);
 
         TIMSK &= ~(1<<OCIE1A);
 	TIMSK &= ~(1<<OCIE1B);
@@ -86,4 +87,18 @@ void timer_init()
 {
 	timer1_init();
 	timer0_init();
+}
+
+void timer_0_1_disble()
+{
+	timer1_stop();
+	timer0_stop();
+}
+
+void timer_0_1_enable()
+{
+	timer1_A_start();
+	timer1_B_start();
+
+	timer0_start();
 }

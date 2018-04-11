@@ -9,5 +9,7 @@ void timer0_init();
 void timer0_start();
 void timer0_stop();
 void timer_init();
+void timer_0_1_disble();
+void timer_0_1_enable();
 
 #endif
