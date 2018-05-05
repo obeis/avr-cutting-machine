@@ -54,14 +54,16 @@ int main()
 
 	manual_mode:
 
-	sei();
-
 	manual_mode_init();
+
+	sei();
 
 	// manual loop
         while(1)
         {
 		manual_mode();
+
+		scan_switch();
 
 		if(PINB & (1<<PB3))
 		{
@@ -81,14 +83,16 @@ int main()
 
 	auto_mode:
 
-	sei();
-
 	auto_mode_init();
+
+	sei();
 
 	// auto loop
 	while(1)
 	{
 		auto_mode();
+
+		scan_switch();
 
 		if(PINB & (1<<PB3))
 		{
@@ -106,6 +110,7 @@ int main()
                 }
 	}
 
+	// Programming Mode
 	programming_mode:
 
 	ssd_p_mode();

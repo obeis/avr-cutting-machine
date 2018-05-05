@@ -17,19 +17,19 @@ uint8_t mode = 0;
 
 	* manual control switch
         PD0 = motor A (PA1)
-        PD1 = motor b (PA2)
-        PD4 = motor c (PA3)
-        PD5 = motor d (PA4)
+        PD1 = motor B (PA2)
+        PD4 = motor C (PA3)
+        PD5 = motor D (PA4)
 
-        PB0 = output PA5
-        PB1 = output PA6
+        PB0 = water (PA5)
+        PB1 = oil (PA6)
         PB3 = auto start switch
-	PA7 = auto mode LED
+	PA0 = auto mode LED
 */
 
 void port_init()
 {
-	DDRA |= (1<<PA7) | (1<<PA6) | (1<<PA5);
+	DDRA |= (1<<PA0) | (1<<PA6) | (1<<PA5);
 
 	DDRB &= ~(1<<PB0);
 	DDRB &= ~(1<<PB1);
@@ -51,7 +51,7 @@ void auto_mode_init()
 	timer_0_1_enable();
 
 	// led on
-	PORTA |= (1<<PA7);
+	PORTA |= (1<<PA0);
 
 	motor_A_on();
 }
@@ -67,7 +67,7 @@ void manual_mode_init()
 	motor_all_stop();
 
 	// led off
-        PORTA &= ~(1<<PA7);
+        PORTA &= ~(1<<PA0);
 }
 
 void manual_mode()
@@ -104,21 +104,24 @@ void manual_mode()
         }
 	else
 		motor_D_off();
-
-/*
-	if(PINB & (1<<PB0))
-	{
-
-	}
-
-	if(PINB & (1<<PB1))
-	{
-
-	}
-*/
 }
 
 void auto_mode()
 {
 
+}
+
+void scan_switch()
+{
+	if(PINB & (1<<PB0))
+        {
+                PORTA ^= (1<<PA5);
+		_delay_ms(350);
+        }
+
+        if(PINB & (1<<PB1))
+        {
+                PORTA ^= (1<<PA6);
+		_delay_ms(350);
+        }
 }

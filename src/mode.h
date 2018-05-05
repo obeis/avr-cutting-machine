@@ -8,5 +8,6 @@ void manual_mode_init();
 void auto_mode();
 void manual_mode();
 void port_init();
+void scan_switch();
 
 #endif
