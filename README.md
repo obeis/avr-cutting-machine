@@ -4,9 +4,11 @@
 
 ### build
 
-`$ make`
-
-`$ make upload`
+```
+cd src
+make
+make upload
+```
 
 				MOTOR_D - INT2
 	MOTOR_A - INT0						MOTOR_B - INT1
